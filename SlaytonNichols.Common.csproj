@@ -4,6 +4,10 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <Authors>Slayton Nichols</Authors>
+    <Company>Slayton Nichols</Company>
+    <PackageDescription>Common infrastructure</PackageDescription>
+    <RepositoryUrl>https://github.com/SlaytonNichols/SlaytonNichols.Common</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
