@@ -19,7 +19,7 @@ jobs:
         with:
           source-url: https://nuget.pkg.github.com/SlaytonNichols/index.json
         env:
-          NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}        
+          NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}} 
           
       - name: Build solution and generate NuGet package
         run: |  
@@ -27,4 +27,4 @@ jobs:
           dotnet pack -c Release -o out  
 
       - name: Push generated package to GitHub registry
-        run: dotnet nuget push ../SlaytonNichols.Common/out/*.nupkg --skip-duplicate --no-symbols true
+        run: dotnet nuget push ../SlaytonNichols.Common/out/*.nupkg --skip-duplicate --no-symbols true --api-key ${{ secrets.PAT }} --source "github"
