@@ -1,5 +1,4 @@
 using System.Text.Encodings.Web;
-using Funq;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.DependencyInjection;
@@ -17,22 +16,6 @@ namespace SlaytonNichols.Common.ServiceStack;
 
 public static class Configure
 {
-    public static void AddPlugins(this Container container, ServiceStackHost host)
-    {
-        host.Plugins.Add(new OpenApiFeature());
-        host.Plugins.Add(new PostmanFeature());
-        host.SetConfig(new HostConfig
-        {
-        });
-        host.Plugins.Add(new SpaFeature
-        {
-            EnableSpaFallback = true
-        });
-        host.ConfigurePlugin<UiFeature>(feature =>
-        {
-        });
-        host.Plugins.Add(new AdminUsersFeature());
-    }
     public static void ConfigureApplication(this IWebHostBuilder builder)
     {
         builder.ConfigureServices((context, services) =>
@@ -97,6 +80,41 @@ public static class Configure
             {
                 IncludeStackTrace = true,
             });
+        });
+
+        builder.ConfigureAppHost(host =>
+        {
+            host.Plugins.Add(new OpenApiFeature());
+            host.Plugins.Add(new PostmanFeature());
+            host.SetConfig(new HostConfig
+            {
+            });
+            host.Plugins.Add(new SpaFeature
+            {
+                EnableSpaFallback = true
+            });
+            host.ConfigurePlugin<UiFeature>(feature =>
+            {
+            });
+            host.Plugins.Add(new AdminUsersFeature());
+
+            host.Plugins.Add(new CorsFeature(allowOriginWhitelist: new[]{
+            "http://localhost:5000",
+            "http://localhost:3000",
+            "http://localhost:5173",
+            "http://localhost:5174",
+            "http://localhost:5175",
+            "http://localhost:5176",
+            "http://localhost:5177",
+            "http://localhost:5178",
+            "https://localhost:5001",
+            "https://localhost:5003",
+            "https://localhost:5005",
+            "https://localhost:5007",
+            "https://localhost:5009",
+            "https://" + Environment.GetEnvironmentVariable("DEPLOY_CDN"),
+            "https://" + Environment.GetEnvironmentVariable("DEPLOY_API")
+        }, allowCredentials: true));
         });
     }
 }
