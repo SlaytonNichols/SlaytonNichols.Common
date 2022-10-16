@@ -4,7 +4,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <Version>1.0.2</Version>
+    <Version>1.0.3</Version>
     <Authors>Slayton Nichols</Authors>
     <Company>Slayton Nichols</Company>
     <PackageDescription>Common infrastructure</PackageDescription>
@@ -17,7 +17,6 @@
     <PackageReference Include="Azure.Storage.Files.DataLake" Version="12.12.0-beta.1" />
     <PackageReference Include="ncrontab" Version="3.3.1" />
     <PackageReference Include="MongoDB.Driver" Version="2.18.0" />
-
   </ItemGroup>
 
 </Project>
