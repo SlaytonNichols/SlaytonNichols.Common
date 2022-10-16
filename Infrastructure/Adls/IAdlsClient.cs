@@ -7,6 +7,6 @@ namespace SlaytonNichols.Common.Infrastructure.Adls
     public interface IAdlsClient
     {
         DataLakeServiceClient GetDataLakeServiceClient(String clientID, string clientSecret, string tenantID);
-        Task WriteJsonToAdls(string json);
+        Task WriteJsonToAdls(string path, string json);
     }
 }

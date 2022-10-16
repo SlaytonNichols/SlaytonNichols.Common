@@ -25,27 +25,20 @@ namespace SlaytonNichols.Common.Infrastructure.Adls
             return new DataLakeServiceClient(new Uri(dfsUri), credential);
         }
 
-        public async Task WriteJsonToAdls(string json)
+        public async Task WriteJsonToAdls(string path, string json)
         {
             var serviceClient = GetDataLakeServiceClient(Environment.GetEnvironmentVariable("CLIENTID"),
                                                  Environment.GetEnvironmentVariable("CLIENT_SECRET"),
                                                  Environment.GetEnvironmentVariable("TENANTID"));
             var databricks = serviceClient.GetFileSystemClient("databricks");
-            var landing = databricks.GetDirectoryClient("landing");
-            if (!landing.Exists())
-                await landing.CreateAsync();
-            var ouraring = landing.GetSubDirectoryClient("ouraring");
-            if (!ouraring.Exists())
-                await ouraring.CreateAsync();
-
-            var heartrates = ouraring.GetSubDirectoryClient("heartrates");
-            if (!heartrates.Exists())
-                await heartrates.CreateAsync();
+            var dir = databricks.GetDirectoryClient(path);
+            if (!dir.Exists())
+                await dir.CreateAsync();
 
             var fileName = @$"{DateTime.Now:yyyy-MM-dd-HH-mm}.json";
             File.WriteAllText(fileName, json);
-            var file = heartrates.CreateFile(fileName);
-            var fileClient = heartrates.GetFileClient(fileName);
+            var file = dir.CreateFile(fileName);
+            var fileClient = dir.GetFileClient(fileName);
             FileStream fileStream = File.OpenRead(fileName);
 
             long fileSize = fileStream.Length;
