@@ -8,5 +8,7 @@ namespace SlaytonNichols.Common.Infrastructure.Adls
     {
         DataLakeServiceClient GetDataLakeServiceClient(String clientID, string clientSecret, string tenantID);
         Task WriteJsonToAdls(string json);
+        Task<DataLakeFileSystemClient> GetFileSystemClientAsync(string containerName);
+        Task<DataLakeDirectoryClient> GetDirectoryClientAsync(DataLakeFileSystemClient fileSystemClient, string directoryName);
     }
 }

@@ -25,6 +25,23 @@ namespace SlaytonNichols.Common.Infrastructure.Adls
             return new DataLakeServiceClient(new Uri(dfsUri), credential);
         }
 
+        public async Task<DataLakeFileSystemClient> GetFileSystemClientAsync(string containerName)
+        {
+            var serviceClient = GetDataLakeServiceClient(Environment.GetEnvironmentVariable("CLIENTID"),
+                                                 Environment.GetEnvironmentVariable("CLIENT_SECRET"),
+                                                 Environment.GetEnvironmentVariable("TENANTID"));
+            var fileSystemClient = serviceClient.GetFileSystemClient(containerName);
+            await fileSystemClient.CreateIfNotExistsAsync();
+            return fileSystemClient;
+        }
+
+        public async Task<DataLakeDirectoryClient> GetDirectoryClientAsync(DataLakeFileSystemClient fileSystemClient, string directoryName)
+        {
+            var directoryClient = fileSystemClient.GetDirectoryClient(directoryName);
+            await directoryClient.CreateIfNotExistsAsync();
+            return directoryClient;
+        }
+
         public async Task WriteJsonToAdls(string json)
         {
             var serviceClient = GetDataLakeServiceClient(Environment.GetEnvironmentVariable("CLIENTID"),
