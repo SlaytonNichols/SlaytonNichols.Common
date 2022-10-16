@@ -6,7 +6,7 @@ using Azure.Core;
 using Azure.Identity;
 using Azure.Storage.Files.DataLake;
 
-namespace OuraRingDataIngest.Service.Infrastructure.Adls.AdlsClient
+namespace SlaytonNichols.Common.Infrastructure.Adls
 {
     public class AdlsClient : IAdlsClient
     {

@@ -5,7 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using NCrontab;
 
-namespace OuraRingDataIngest.Service.Infrastructure.Cron.CronClient
+namespace SlaytonNichols.Common.Infrastructure.Cron
 {
     public class CronClient : ICronClient
     {

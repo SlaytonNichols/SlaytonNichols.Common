@@ -1,6 +1,6 @@
 using MongoDB.Bson;
 
-namespace SlaytonNichols.Posts.Service.Infrastructure.MongoDb;
+namespace SlaytonNichols.Common.Infrastructure.MongoDb;
 
 public abstract class Document : IDocument
 {

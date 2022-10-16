@@ -2,7 +2,7 @@ using System.Linq.Expressions;
 using MongoDB.Bson;
 using MongoDB.Driver;
 
-namespace SlaytonNichols.Posts.Service.Infrastructure.MongoDb.Repositories;
+namespace SlaytonNichols.Common.Infrastructure.MongoDb.Repositories;
 
 public class MongoRepository<TDocument> : IMongoRepository<TDocument>
     where TDocument : IDocument

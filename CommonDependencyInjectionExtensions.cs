@@ -1,7 +1,7 @@
 using Microsoft.Extensions.DependencyInjection;
-using SlaytonNichols.Posts.Service.Infrastructure.MongoDb.Repositories;
+using SlaytonNichols.Common.Infrastructure.MongoDb.Repositories;
 
-namespace SlaytonNichols.Posts.Service;
+namespace SlaytonNichols.Common;
 
 public static class CommonDependencyInjectionExtensions
 {

@@ -1,6 +1,6 @@
 using System.Linq.Expressions;
 
-namespace SlaytonNichols.Posts.Service.Infrastructure.MongoDb.Repositories;
+namespace SlaytonNichols.Common.Infrastructure.MongoDb.Repositories;
 public interface IMongoRepository<TDocument> where TDocument : IDocument
 {
     IQueryable<TDocument> AsQueryable();

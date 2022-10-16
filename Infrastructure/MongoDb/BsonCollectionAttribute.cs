@@ -1,4 +1,4 @@
-namespace SlaytonNichols.Posts.Service.Infrastructure.MongoDb;
+namespace SlaytonNichols.Common.Infrastructure.MongoDb;
 
 [AttributeUsage(AttributeTargets.Class, Inherited = false)]
 public class BsonCollectionAttribute : Attribute

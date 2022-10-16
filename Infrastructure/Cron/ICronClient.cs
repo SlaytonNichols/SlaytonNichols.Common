@@ -2,7 +2,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace OuraRingDataIngest.Service.Infrastructure.Cron.CronClient
+namespace SlaytonNichols.Common.Infrastructure.Cron
 {
     public interface ICronClient
     {

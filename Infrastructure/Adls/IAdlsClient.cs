@@ -2,7 +2,7 @@ using System;
 using System.Threading.Tasks;
 using Azure.Storage.Files.DataLake;
 
-namespace OuraRingDataIngest.Service.Infrastructure.Adls.AdlsClient
+namespace SlaytonNichols.Common.Infrastructure.Adls
 {
     public interface IAdlsClient
     {
