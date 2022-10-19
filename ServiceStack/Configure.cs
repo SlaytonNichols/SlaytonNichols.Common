@@ -71,10 +71,10 @@ public static class Configure
 
         builder.ConfigureAppHost(host =>
         {
-            host.Plugins.Add(new RequestLogsFeature
-            {
-                EnableResponseTracking = true,
-            });
+            // host.Plugins.Add(new RequestLogsFeature
+            // {
+            //     EnableResponseTracking = true,
+            // });
 
             // host.Plugins.Add(new ProfilingFeature
             // {
