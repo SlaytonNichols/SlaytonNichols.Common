@@ -76,10 +76,10 @@ public static class Configure
                 EnableResponseTracking = true,
             });
 
-            host.Plugins.Add(new ProfilingFeature
-            {
-                IncludeStackTrace = true,
-            });
+            // host.Plugins.Add(new ProfilingFeature
+            // {
+            //     IncludeStackTrace = true,
+            // });
         });
 
         builder.ConfigureAppHost(host =>
