@@ -10,6 +10,10 @@ jobs:
     runs-on: ubuntu-18.04
     name: Update NuGet package
     steps:
+      - uses: actions/delete-package-versions@v3
+        with:
+          package-name: 'SlaytonNichols.Common'
+          min-versions-to-keep: 3
 
       - name: Checkout repository
         uses: actions/checkout@v1
