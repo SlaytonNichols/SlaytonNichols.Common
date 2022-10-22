@@ -11,6 +11,7 @@ using ServiceStack.Authentication.MongoDb;
 using Microsoft.Extensions.Configuration;
 using ServiceStack.Admin;
 using SlaytonNichols.Common.ServiceStack.Auth;
+using SlaytonNichols.Common.Infrastructure.Logging;
 
 namespace SlaytonNichols.Common.ServiceStack;
 
@@ -28,18 +29,16 @@ public static class Configure
             var mongoClient = new MongoClient(context.Configuration.GetConnectionString("Mongo"));
             IMongoDatabase mongoDatabase = mongoClient.GetDatabase("SlaytonNichols");
             services.AddSingleton(mongoDatabase);
-        })
-        .ConfigureLogging(logginBuilder =>
-        {
-            logginBuilder.ClearProviders();
-            //Console logging for Data Dog Agent
-            logginBuilder.AddJsonConsole(jsonConsoleFormatterOptions =>
+            services.AddLogging(x =>
             {
-                jsonConsoleFormatterOptions.JsonWriterOptions = new()
+                x.ClearProviders();
+                CustomLoggerConfiguration options = new();
+                context.Configuration.GetSection(nameof(CustomLoggerConfiguration))
+                                 .Bind(options);
+                x.AddCustomLogger(config =>
                 {
-                    Indented = false,
-                    Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping
-                };
+                    config = options;
+                });
             });
         })
         .ConfigureAppHost(appHost =>
