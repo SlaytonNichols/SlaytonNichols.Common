@@ -3,7 +3,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <Version>1.0.19</Version>
+    <Version>1.0.20</Version>
     <Authors>Slayton Nichols</Authors>
     <Company>Slayton Nichols</Company>
     <PackageDescription>Common infrastructure</PackageDescription>
@@ -22,6 +22,7 @@
     <PackageReference Include="ServiceStack.Server" Version="6.*" />
     <PackageReference Include="ServiceStack.Text" Version="6.*" />
     <PackageReference Include="ServiceStack.Api.OpenApi" Version="6.3.0" />
-
+    <PackageReference Include="Datadog.Monitoring.Distribution" Version="1.28.6-beta01" />
+    <PackageReference Include="Datadog.Trace" Version="2.17.0" />
   </ItemGroup>
 </Project>
