@@ -47,9 +47,9 @@ public static class Configure
             appHost.Plugins.Add(new AuthFeature(() => new CustomUserSession(),
                 new IAuthProvider[] {
                     new CredentialsAuthProvider(appSettings),
-                    new GoogleAuthProvider(appSettings),
-                    new MicrosoftGraphAuthProvider(appSettings),
-                    new GithubAuthProvider(appSettings)
+                    new Google(appSettings),
+                    new MicrosoftGraph(appSettings),
+                    new Github(appSettings)
                 }));
 
             appHost.Plugins.Add(new RegistrationFeature());
